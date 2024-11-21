@@ -3,12 +3,14 @@ import {
   createRoutesFromElements,
   createBrowserRouter,
   Route,
+  RouterProvider
 } from "react-router-dom";
 import Home from './Pages/Home_page/Home';
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route> 
-      <Route path="/home" element={<Home/>} />
+      <Route path="/" element={<Home/>} />
       
     </Route>
   )
@@ -17,7 +19,7 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <div>
-      <Home/>
+       <RouterProvider router={router} />
        
 
     </div>
