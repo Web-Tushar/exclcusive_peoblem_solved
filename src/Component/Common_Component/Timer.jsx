@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-const Timer = (TimeofOffer) => {
-  const [time, setTime] = useState(TimeofOffer * 24 * 60 * 60 * 1000 ||0);
+const Timer = () => {
+  const [time, setTime] = useState(2 * 24 * 60 * 60 * 1000 ||0);
 
   useEffect(() => {
        const worker = new Worker(new URL('../../CountDownWorker.js', import.meta.url))
@@ -9,15 +9,15 @@ const Timer = (TimeofOffer) => {
        worker.onmessage = (e) => {
             setTime(e.data);
        };
-  }, []);
+  }, []); 
 
-  // useEffect(()=>{
-  //      setTimeout(() => {
-  //           setTime(time - 1000)
-  //      }, 1000);
-  // }, [time])
-  const formateDate = (milisecond) => {
-       let total_second = parseInt(Math.floor(milisecond / 1000));
+//   useEffect(()=>{
+//        setTimeout(() => {
+//             setTime(time - 1000)
+//        }, 1000);
+//   }, [time])
+  const formateDate = (miliSecond) => {
+       let total_second = parseInt(Math.floor(miliSecond / 1000));
        let total_minutes = parseInt(Math.floor(total_second / 60));
        let total_hours = parseInt(Math.floor(total_minutes / 60));
        let Days = parseInt(Math.floor(total_hours / 24));
